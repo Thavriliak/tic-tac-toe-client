@@ -1,8 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 
-$background-color: #919ade;
-$font-color: #dfdfdf;
-$white: #fff;
+$background-color: #000000;
+$font-color: #542298;
+$white: #543298;
 $grey: rgb(128, 128, 128);
 $teal: rgb(0, 156, 161);
 $black: #000;
@@ -18,7 +18,8 @@ body {
   display: flex;
   height: 80px;
   justify-content: center;
-  padding: 100px;
+  padding: 75px;
+  font-size: 100px;
 }
 
 .row {
@@ -36,4 +37,6 @@ body {
 h1 {
   text-align: center;
   padding: 40px;
+  color: $font-color;
+  font-size: 80px;
 }
