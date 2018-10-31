@@ -12,10 +12,9 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic-Tac-Toe</h1>
       <button type="button" class="btn btn-primary" data-toggle="modal"
       data-target="#signInModal">Sign In</button>
-
+<!-- Creating a sign in modal on my application-->
       <div class="modal fade" id="signInModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -26,6 +25,7 @@
 
             </div>
             <div class="modal-body">
+              <!-- Adding sign in to body of modal-->
               <form id="sign-in" class="border">
                 <fieldset>
                   <legend>Sign in!</legend>
@@ -42,7 +42,7 @@
           </div>
         </div>
       </div>
-
+<!--Adding a sign up modal to application-->
       <button type="button" class="btn btn-primary" data-toggle="modal"
       data-target="#signUpModal">Sign Up!</button>
 
@@ -56,6 +56,7 @@
 
             </div>
             <div class="modal-body">
+              <!-- Adding in sign up inside of modal-->
               <form id="sign-up" class="border">
                 <fieldset>
                   <legend>Sign up</legend>
@@ -72,23 +73,33 @@
           </div>
         </div>
       </div>
+      <h1>Tic-Tac-Toe</h1>
+      <h3>Instructions</h3>
+        <p>Tic Tac Toe is a simple game of logic and fun! One player is X and
+          the other player is O, each take alternating turns taking up a position
+          on the gameboard. The goal you may ask?? Get three in a row first and
+          you win! Sound easy? I guess we will see...</p>
 
+<!-- Using Bootstrap to create rows and columns for gameboard-->
       <div class="container">
         <div class="row">
-          <div class="col-2 box gray">X</div>
-          <div class="col-2 box gray">X</div>
-          <div class="col-2 box gray">X</div>
+          <div class="col-2 box gray" id="box1">X</div>
+          <div class="col-2 box gray" id="box2">X</div>
+          <div class="col-2 box gray" id="box3">X</div>
         </div>
         <div class="row">
-          <div class="col-2 box gray">X</div>
-          <div class="col-2 box gray">X</div>
-          <div class="col-2 box gray">X</div>
+          <div class="col-2 box gray" id="box4">X</div>
+          <div class="col-2 box gray" id="box5">X</div>
+          <div class="col-2 box gray" id="box6">X</div>
         </div>
         <div class="row">
-          <div class="col-2 box gray">X</div>
-          <div class="col-2 box gray">X</div>
-          <div class="col-2 box gray">X</div>
+          <div class="col-2 box gray" id="box7">X</div>
+          <div class="col-2 box gray" id="box8">X</div>
+          <div class="col-2 box gray" id="box9">X</div>
         </div>
+      </div>
+      <div class="playAgain">
+        <button type="button" class="btn btn-primary">Play Again!</button>
       </div>
     </body>
 </html>
