@@ -4,10 +4,10 @@ const ui = require('./ui')
 const getFormFields = require('../../lib/get-form-fields.js')
 
 // Cannot Occupy the same space
-const nonOccupy = function () {
-  if ( === '') {
+const nonOccupy = (event) => {
+  const target = $(event.target)
+  if (target.text() === '') {
     swapXO()
-    didIWin()
   } else {
     console.log('Pick another spot idiot')
   }
@@ -17,7 +17,7 @@ const tacBoard = ['', '', '', '', '', '', '', '', '']
 let player = 'X'
 // By letting the player equal 1, I am able to alternate between 1 and 0 to make
 // my if else statement work and alternate between X and O.
-const swapXO = function (event) {
+const swapXO = function () {
   if (player === 'X') {
     player = 'O'
     $(event.currentTarget).text('X')
@@ -31,6 +31,7 @@ const swapXO = function (event) {
   }
   console.log(player)
   didIWin()
+  // nonOccupy()
 }
 
 const didIWin = function () {
@@ -43,7 +44,10 @@ const didIWin = function () {
     tacBoard[0] === 'X' && tacBoard[1] === 'X' && tacBoard[2] === 'X' ||
     tacBoard[3] === 'X' && tacBoard[4] === 'X' && tacBoard[5] === 'X' ||
     tacBoard[6] === 'X' && tacBoard[7] === 'X' && tacBoard[8] === 'X'
-) { console.log('Player One won the game!')}
+) {
+    console.log('Player One won the game!')
+    $('.playerWins').append('<h1>Player One Wins</h1>')
+  }
 else if (
     tacBoard[0] === 'O' && tacBoard[3] === 'O' && tacBoard[6] === 'O' ||
     tacBoard[1] === 'O' && tacBoard[4] === 'O' && tacBoard[7] === 'O' ||
@@ -55,8 +59,9 @@ else if (
     tacBoard[6] === 'O' && tacBoard[7] === 'O' && tacBoard[8] === 'O'
   ) {
     console.log('Player Two won the game!')
+    $('.playerWins').append('<h1>Player Two Wins</h1>')
   }
 }
 module.exports = {
-  swapXO
+  nonOccupy
 }
