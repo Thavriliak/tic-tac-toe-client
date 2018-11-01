@@ -1,4 +1,5 @@
 'use strict'
+// Using this to store the User.
 
 const store = {
 }
