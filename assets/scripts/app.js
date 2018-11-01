@@ -18,4 +18,5 @@ $(() => {
   $('#6').on('click', events.nonOccupy)
   $('#7').on('click', events.nonOccupy)
   $('#8').on('click', events.nonOccupy)
+  $('.playAgain').on('click', events.playAgain)
 })

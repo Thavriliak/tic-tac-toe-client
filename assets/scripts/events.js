@@ -13,7 +13,7 @@ const nonOccupy = (event) => {
   }
 }
 // create empty array, call each move into proper array spot
-const tacBoard = ['', '', '', '', '', '', '', '', '']
+let tacBoard = ['', '', '', '', '', '', '', '', '']
 let player = 'X'
 // By letting the player equal 1, I am able to alternate between 1 and 0 to make
 // my if else statement work and alternate between X and O.
@@ -46,7 +46,7 @@ const didIWin = function () {
     tacBoard[6] === 'X' && tacBoard[7] === 'X' && tacBoard[8] === 'X'
 ) {
     console.log('Player One won the game!')
-    $('.playerWins').append('<h1>Player One Wins</h1>')
+    $('.playerWins').append('<h3>Player One Wins</h3>')
   }
 else if (
     tacBoard[0] === 'O' && tacBoard[3] === 'O' && tacBoard[6] === 'O' ||
@@ -59,9 +59,28 @@ else if (
     tacBoard[6] === 'O' && tacBoard[7] === 'O' && tacBoard[8] === 'O'
   ) {
     console.log('Player Two won the game!')
-    $('.playerWins').append('<h1>Player Two Wins</h1>')
+    $('.playerWins').append('<h3>Player Two Wins</h3>')
   }
 }
+
+const playAgain = function (event) {
+  $('#pAgain').click(function () {
+    tacBoard = ['', '', '', '', '', '', '', '', '']
+    console.log(tacBoard)
+    $('#0').text('')
+    $('#1').text('')
+    $('#2').text('')
+    $('#3').text('')
+    $('#4').text('')
+    $('#5').text('')
+    $('#6').text('')
+    $('#7').text('')
+    $('#8').text('')
+    $('.playerWins').text('')
+  })
+}
+
 module.exports = {
-  nonOccupy
+  nonOccupy,
+  playAgain
 }
