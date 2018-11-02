@@ -12,6 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+    <div class="buttModals">
       <button type="button" class="btn btn-primary" data-toggle="modal"
       data-target="#signInModal">Sign In</button>
 <!-- Creating a sign in modal on my application-->
@@ -37,13 +38,12 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Sign In</button>
             </div>
           </div>
         </div>
       </div>
 <!--Adding a sign up modal to application-->
-      <button type="button" class="btn btn-primary" data-toggle="modal"
+      <button type="button" class="btn btn-primary" id="signUppp" data-toggle="modal"
       data-target="#signUpModal">Sign Up!</button>
 
       <div class="modal fade" id="signUpModal">
@@ -62,22 +62,22 @@
                   <legend>Sign up</legend>
                   <input type="text" name="credentials[email]" placeholder="Email">
                   <input type="password" name="credentials[password]" placeholder="Password">
+                  <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
                   <input type="submit" value="Sign up!">
                 </fieldset>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Sign up</button>
             </div>
           </div>
         </div>
       </div>
+    </div>
   <div id="afterSignIn">
-    <button type="submit" class="btn btn-primary">Sign Out</button>
+    <button type="button" class="btn btn-primary" id="sgOut">Sign Out</button>
     <button type="button" class="btn btn-primary" data-toggle="modal"
       data-target="#changePasswordModal">Change Password</button>
-
       <div class="modal fade" id="changePasswordModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -92,15 +92,14 @@
               <form id="change-password" class="border">
                 <fieldset>
                   <legend>Change Password</legend>
-                  <input type="password" name="credentials[oldpassword]" placeholder="Password">
-                  <input type="password" name="credentials[newpassword]" placeholder="Password">
+                  <input type="password" name="passwords[old]" placeholder="Old Password">
+                  <input type="password" name="passwords[new]" placeholder="New Password">
                   <input type="submit" value="Change Password!">
                 </fieldset>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Change Password</button>
             </div>
           </div>
         </div>

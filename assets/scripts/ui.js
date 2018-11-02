@@ -5,6 +5,8 @@ const signUpSuccess = data => {
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('signUpSuccess ran. Data is :', data)
+  $('#signUppp').hide()
+  $('#signUpModal').modal('toggle')
 }
 
 const signUpFailure = error => {
@@ -20,6 +22,9 @@ const signInSuccess = data => {
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('signInSuccess ran. Data is :', data)
+  $('.buttModals').hide()
+  $('#signInModal').modal('toggle')
+  $('#afterSignIn').show()
 }
 
 const signInFailure = error => {
@@ -34,6 +39,7 @@ const changePasswordSuccess = data => {
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('changePasswordSuccess ran. Data is :', data)
+  $('#changePasswordModal').modal('toggle')
 }
 
 const changePasswordFailure = error => {
@@ -49,6 +55,8 @@ const signOutSuccess = data => {
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('signOutSuccess ran. Data is :', data)
+  $('.buttModals').show()
+  $('#afterSignIn').hide()
 }
 
 const signOutFailure = error => {

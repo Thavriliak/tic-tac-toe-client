@@ -48,6 +48,7 @@ const didIWin = function () {
     console.log('Player One won the game!')
     // places text inside the empty div above the gameboard.
     $('.playerWins').append('<h3>Player One Wins</h3>')
+    return true
   }
 else if (
     tacBoard[0] === 'O' && tacBoard[3] === 'O' && tacBoard[6] === 'O' ||
@@ -61,6 +62,7 @@ else if (
   ) {
     console.log('Player Two won the game!')
     $('.playerWins').append('<h3>Player Two Wins</h3>')
+    return true
   }
 }
 // clears the gameboard and tacBoard of any values that the player can start over.
@@ -81,25 +83,21 @@ const playAgain = function (event) {
   })
 }
 
-// const startOver = () => {
-//   if (didIWin === true) {
-//
-//   }
-// }
-
+const doNotPassGo = function () {
+  if (didIWin() === false) {
+    $('.container').off()
+}
 // ------------------------------------------------------------------------------
 
 const onSignUp = event => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  // take this data and send it to our server
-  // using an HTTP request (POST)
   api.signUp(data)
-    .then(ui.signUpSuccess) // if your request was succesful
-    .catch(ui.signUpFailure) // if your request failed
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
 }
 
-const onSignIn = event => {
+const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.signIn(data)
@@ -120,6 +118,14 @@ const onSignOut = event => {
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
+}
+
+// ----------------------------------------------------------------------------
+
+const eachGameMove = function () {
+  if (swapXO()) {
+
+  }
 }
 
 module.exports = {

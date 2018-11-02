@@ -40,12 +40,10 @@ const signOut = () => {
 
 // ---------------------------------------------------------------------------
 
-const baseUrl = 'https://wdi-library-api.herokuapp.com'
-
 const getAllMovesFromApi = function () {
   // use AJAX to send request
   const response = $.ajax({
-    url: baseUrl + '/books',
+    url: config.apiUrl + '/books',
     method: 'GET'
   })
   // return the AJAX object
@@ -54,14 +52,14 @@ const getAllMovesFromApi = function () {
 
 const getOneBookFromApi = function (id) {
   return $.ajax({
-    url: baseUrl + `/books/${id}`,
+    url: config.apiUrl + `/books/${id}`,
     method: 'GET'
   })
 }
 
 const deleteOneBookFromApi = function (id) {
   return $.ajax({
-    url: baseUrl + `/books/${id}`,
+    url: config.Url + `/books/${id}`,
     method: 'DELETE'
   })
 }
@@ -69,7 +67,7 @@ const deleteOneBookFromApi = function (id) {
 // { book: { id: 55, title: 'something', author: 'some author'} }
 const updateOneBookFromApi = function (bookObject) {
   return $.ajax({
-    url: baseUrl + `/books/${bookObject.book.id}`,
+    url: config.Url + `/books/${bookObject.book.id}`,
     method: 'PATCH',
     data: bookObject
   })
@@ -77,7 +75,7 @@ const updateOneBookFromApi = function (bookObject) {
 
 const createOneBookFromApi = function (bookObject) {
   return $.ajax({
-    url: baseUrl + `/books/`,
+    url: config.Url + `/books/`,
     method: 'POST',
     data: bookObject
   })
