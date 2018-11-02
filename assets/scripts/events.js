@@ -3,13 +3,16 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const getFormFields = require('../../lib/get-form-fields.js')
 
+let game = false
 // Cannot Occupy the same space
 const nonOccupy = (event) => {
   const target = $(event.target)
-  if (target.text() === '') {
-    swapXO()
-  } else {
-    console.log('Pick another spot idiot')
+  if (game === false) {
+    if (target.text() === '') {
+      swapXO()
+    } else {
+      console.log('Pick another spot idiot')
+    }
   }
 }
 // create empty array, call each move into proper array spot
@@ -31,6 +34,7 @@ const swapXO = function () {
   }
   console.log(player)
   didIWin()
+  // doNotPassGo()
   // nonOccupy()
 }
 // all of the possibilities for either x to win or for o to win
@@ -48,7 +52,8 @@ const didIWin = function () {
     console.log('Player One won the game!')
     // places text inside the empty div above the gameboard.
     $('.playerWins').append('<h3>Player One Wins</h3>')
-    return true
+    $('.container').off(event.currentTarget)
+    game = true
   }
 else if (
     tacBoard[0] === 'O' && tacBoard[3] === 'O' && tacBoard[6] === 'O' ||
@@ -62,7 +67,8 @@ else if (
   ) {
     console.log('Player Two won the game!')
     $('.playerWins').append('<h3>Player Two Wins</h3>')
-    return true
+    $('.container').off(event.currentTarget)
+    game = true
   }
 }
 // clears the gameboard and tacBoard of any values that the player can start over.
@@ -80,13 +86,11 @@ const playAgain = function (event) {
     $('#7').text('')
     $('#8').text('')
     $('.playerWins').text('')
+    game = false
   })
 }
 
-const doNotPassGo = function () {
-  if (didIWin() === false) {
-    $('.container').off()
-}
+
 // ------------------------------------------------------------------------------
 
 const onSignUp = event => {
