@@ -19,4 +19,8 @@ $(() => {
   $('#7').on('click', events.nonOccupy)
   $('#8').on('click', events.nonOccupy)
   $('.playAgain').on('click', events.playAgain)
+  $('#sign-up').on('submit', events.onSignUp)
+  $('#sign-in').on('submit', events.onSignIn)
+  $('#change-password').on('submit', events.onChangePassword)
+  $('#sign-out').on('submit', events.onSignOut)
 })

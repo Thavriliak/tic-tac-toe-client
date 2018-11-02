@@ -1,6 +1,6 @@
-const store = require('./store')
-const api = require('./api')
-const ui = require('./ui')
+const store = require('./store.js')
+const api = require('./api.js')
+const ui = require('./ui.js')
 const getFormFields = require('../../lib/get-form-fields.js')
 
 // Cannot Occupy the same space
@@ -33,7 +33,7 @@ const swapXO = function () {
   didIWin()
   // nonOccupy()
 }
-
+// all of the possibilities for either x to win or for o to win
 const didIWin = function () {
   if (
     tacBoard[0] === 'X' && tacBoard[3] === 'X' && tacBoard[6] === 'X' ||
@@ -46,6 +46,7 @@ const didIWin = function () {
     tacBoard[6] === 'X' && tacBoard[7] === 'X' && tacBoard[8] === 'X'
 ) {
     console.log('Player One won the game!')
+    // places text inside the empty div above the gameboard.
     $('.playerWins').append('<h3>Player One Wins</h3>')
   }
 else if (
@@ -62,7 +63,7 @@ else if (
     $('.playerWins').append('<h3>Player Two Wins</h3>')
   }
 }
-
+// clears the gameboard and tacBoard of any values that the player can start over.
 const playAgain = function (event) {
   $('#pAgain').click(function () {
     tacBoard = ['', '', '', '', '', '', '', '', '']
@@ -80,7 +81,52 @@ const playAgain = function (event) {
   })
 }
 
+// const startOver = () => {
+//   if (didIWin === true) {
+//
+//   }
+// }
+
+// ------------------------------------------------------------------------------
+
+const onSignUp = event => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  // take this data and send it to our server
+  // using an HTTP request (POST)
+  api.signUp(data)
+    .then(ui.signUpSuccess) // if your request was succesful
+    .catch(ui.signUpFailure) // if your request failed
+}
+
+const onSignIn = event => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
+}
+
+const onChangePassword = event => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+}
+
+const onSignOut = event => {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+
 module.exports = {
   nonOccupy,
-  playAgain
+  playAgain,
+  onSignIn,
+  onSignUp,
+  onSignOut,
+  onChangePassword
 }
