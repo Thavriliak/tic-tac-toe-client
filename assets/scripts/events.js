@@ -70,6 +70,11 @@ else if (
     $('.container').off(event.currentTarget)
     game = true
   }
+else if (tacBoard[0] != '' && tacBoard[1] != '' && tacBoard[2] != ''
+  && tacBoard[3] != '' && tacBoard[4] != '' && tacBoard[5] != ''
+  && tacBoard[6] != '' && tacBoard[7] != '' && tacBoard[8] != '') {
+    $('.playerWins').append('<h3>Its a Draw!</h3>')
+  }
 }
 // clears the gameboard and tacBoard of any values that the player can start over.
 const playAgain = function (event) {
