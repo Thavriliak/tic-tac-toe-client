@@ -10,8 +10,6 @@ const nonOccupy = (event) => {
   if (game === false) {
     if (target.text() === '') {
       swapXO()
-    } else {
-      console.log('Pick another spot idiot')
     }
   }
 }
