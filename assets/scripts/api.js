@@ -40,55 +40,54 @@ const signOut = () => {
 
 // ---------------------------------------------------------------------------
 
-const getAllMovesFromApi = function () {
-  // use AJAX to send request
-  const response = $.ajax({
-    url: config.apiUrl + '/books',
-    method: 'GET'
-  })
-  // return the AJAX object
-  return response
-}
-
-const getOneBookFromApi = function (id) {
-  return $.ajax({
-    url: config.apiUrl + `/books/${id}`,
-    method: 'GET'
-  })
-}
-
-const deleteOneBookFromApi = function (id) {
-  return $.ajax({
-    url: config.Url + `/books/${id}`,
-    method: 'DELETE'
-  })
-}
-
-// { book: { id: 55, title: 'something', author: 'some author'} }
-const updateOneBookFromApi = function (bookObject) {
-  return $.ajax({
-    url: config.Url + `/books/${bookObject.book.id}`,
-    method: 'PATCH',
-    data: bookObject
-  })
-}
-
-const createOneBookFromApi = function (bookObject) {
-  return $.ajax({
-    url: config.Url + `/books/`,
-    method: 'POST',
-    data: bookObject
-  })
-}
+// const getAllMovesFromApi = function () {
+//   // use AJAX to send request
+//   const response = $.ajax({
+//     url: config.apiUrl + '/books',
+//     method: 'GET'
+//   })
+//   // return the AJAX object
+//   return response
+// }
+//
+// const getOneGameFromApi = function (id) {
+//   return $.ajax({
+//     url: config.apiUrl + `/games/${id}`,
+//     method: 'GET'
+//   })
+// // }
+//
+// const deleteOneGameFromApi = function (id) {
+//   return $.ajax({
+//     url: config.Url + `/games/${id}`,
+//     method: 'DELETE'
+//   })
+// }
+//
+// const updateOneMoveFromApi = function (moveObject) {
+//   return $.ajax({
+//     url: config.Url + `/games/${moveObject.move.id}`,
+//     method: 'PATCH',
+//     data: moveObject
+//   })
+// }
+//
+// const createOneGameFromApi = function (moveObject) {
+//   return $.ajax({
+//     url: config.Url + `/games/`,
+//     method: 'POST',
+//     data: moveObject
+//   })
+// }
 
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut,
-  getAllMovesFromApi,
-  getOneBookFromApi,
-  deleteOneBookFromApi,
-  updateOneBookFromApi,
-  createOneBookFromApi
+  signOut
+  // getAllMovesFromApi,
+  // getOneGameFromApi,
+  // deleteOneGameFromApi,
+  // updateOneMoveFromApi,
+  // createOneGameFromApi
 }

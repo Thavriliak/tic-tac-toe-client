@@ -30,6 +30,7 @@ body {
 
 .playAgain {
   text-align: center;
+  display: none;
 }
 
 .row {
@@ -45,6 +46,15 @@ body {
 }
 
 #afterSignIn {
+  display: none;
+}
+
+#theContainer {
+  display: none;
+}
+
+.newGame {
+  text-align: center;
   display: none;
 }
 

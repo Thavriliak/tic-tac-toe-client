@@ -93,6 +93,14 @@ const playAgain = function (event) {
   })
 }
 
+const newGame = function (event) {
+  $('#newGame').click(function () {
+    $('.container').show()
+    $('.playAgain').show()
+    $('.newGame').hide()
+  })
+}
+
 
 // ------------------------------------------------------------------------------
 
@@ -129,15 +137,16 @@ const onSignOut = event => {
 
 // ----------------------------------------------------------------------------
 
-const eachGameMove = function () {
-  if (swapXO()) {
-
-  }
-}
+// const eachGameMove = function () {
+//   if (swapXO()) {
+//
+//   }
+// }
 
 module.exports = {
   nonOccupy,
   playAgain,
+  newGame,
   onSignIn,
   onSignUp,
   onSignOut,

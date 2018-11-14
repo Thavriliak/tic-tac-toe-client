@@ -25,6 +25,7 @@ const signInSuccess = data => {
   $('.buttModals').hide()
   $('#signInModal').modal('toggle')
   $('#afterSignIn').show()
+  $('.newGame').show()
 }
 
 const signInFailure = error => {
