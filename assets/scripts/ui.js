@@ -58,6 +58,9 @@ const signOutSuccess = data => {
   console.log('signOutSuccess ran. Data is :', data)
   $('.buttModals').show()
   $('#afterSignIn').hide()
+  $('.container').hide()
+  $('.newGame').hide()
+  $('.playAgain').hide()
 }
 
 const signOutFailure = error => {
@@ -65,6 +68,24 @@ const signOutFailure = error => {
   $('#message').removeClass()
   $('#message').addClass('failure')
   console.error('signOutFailure ran. Error is :', error)
+}
+
+const onNewGameSuccess = data => {
+  store.gameId = data.game.id
+}
+
+const onNewGameFailure = error => {
+  console.log('You had an error when creating a new game')
+  console.log(error)
+}
+
+const onGameMoveSuccess = data => {
+  console.log('congrats B')
+}
+
+const onGameMoveFailure = error => {
+  console.log(error)
+  console.log('Oops you dumb stupid idiot')
 }
 
 module.exports = {
@@ -75,5 +96,9 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  onNewGameSuccess,
+  onNewGameFailure,
+  onGameMoveSuccess,
+  onGameMoveFailure
 }

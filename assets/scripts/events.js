@@ -143,6 +143,30 @@ const onSignOut = event => {
 //   }
 // }
 
+const onNewGame = event => {
+  api.newGameToApi()
+    .then(ui.onNewGameSuccess)
+    .catch(ui.onNewGameFailure)
+}
+
+const onGameMoves = event => {
+  const index = $(event.target).attr('class').replace('cell id', '')
+  const value = player
+  const over = didIWin()
+  const data = {
+    game: {
+      cell: {
+        index,
+        value
+      },
+      over
+    }
+  }
+  api.updateOneMoveFromApi(data)
+    .then(ui.onGameMoveSuccess)
+    .catch(ui.onGameMoveFailure)
+}
+
 module.exports = {
   nonOccupy,
   playAgain,
@@ -150,5 +174,7 @@ module.exports = {
   onSignIn,
   onSignUp,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  onNewGame,
+  onGameMoves
 }

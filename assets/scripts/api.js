@@ -63,31 +63,39 @@ const signOut = () => {
 //     method: 'DELETE'
 //   })
 // }
-//
-// const updateOneMoveFromApi = function (moveObject) {
-//   return $.ajax({
-//     url: config.Url + `/games/${moveObject.move.id}`,
-//     method: 'PATCH',
-//     data: moveObject
-//   })
-// }
-//
-// const createOneGameFromApi = function (moveObject) {
-//   return $.ajax({
-//     url: config.Url + `/games/`,
-//     method: 'POST',
-//     data: moveObject
-//   })
-// }
+
+const updateOneMoveFromApi = data => {
+  return $.ajax({
+    url: config.apiUrl + `/games/${store.gameId}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+const newGameToApi = () => {
+  return $.ajax({
+    url: config.apiUrl + `/games`,
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {}
+  })
+}
+
+
 
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
   // getAllMovesFromApi,
   // getOneGameFromApi,
   // deleteOneGameFromApi,
-  // updateOneMoveFromApi,
-  // createOneGameFromApi
+  updateOneMoveFromApi,
+  newGameToApi
 }

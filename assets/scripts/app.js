@@ -24,4 +24,7 @@ $(() => {
   $('#change-password').on('submit', events.onChangePassword)
   $('#sgOut').on('click', events.onSignOut)
   $('#newGame').on('click', events.newGame)
+  $('#newGame').on('click', events.onNewGame)
+  $('.playAgain').on('click', events.onNewGame)
+  $('.col-2').on('click', events.onGameMoves)
 })
