@@ -71,7 +71,21 @@ const signOutFailure = error => {
 }
 
 const onNewGameSuccess = data => {
+  console.log('made game')
   store.gameId = data.game.id
+  $('.container').show()
+  $('.playAgain').show()
+  $('.newGame').hide()
+  $('#0').text('')
+  $('#1').text('')
+  $('#2').text('')
+  $('#3').text('')
+  $('#4').text('')
+  $('#5').text('')
+  $('#6').text('')
+  $('#7').text('')
+  $('#8').text('')
+  $('.playerWins').text('')
 }
 
 const onNewGameFailure = error => {

@@ -75,23 +75,25 @@ else if (tacBoard[0] != '' && tacBoard[1] != '' && tacBoard[2] != ''
   }
 }
 // clears the gameboard and tacBoard of any values that the player can start over.
-const playAgain = function (event) {
-  $('#pAgain').click(function () {
-    tacBoard = ['', '', '', '', '', '', '', '', '']
-    console.log(tacBoard)
-    $('#0').text('')
-    $('#1').text('')
-    $('#2').text('')
-    $('#3').text('')
-    $('#4').text('')
-    $('#5').text('')
-    $('#6').text('')
-    $('#7').text('')
-    $('#8').text('')
-    $('.playerWins').text('')
-    game = false
-  })
-}
+// const playAgain = function (event) {
+//   $('#pAgain').click(function () {
+//     tacBoard = ['', '', '', '', '', '', '', '', '']
+//     console.log(tacBoard)
+//     game = false
+//
+//     $('#0').text('')
+//     $('#1').text('')
+//     $('#2').text('')
+//     $('#3').text('')
+//     $('#4').text('')
+//     $('#5').text('')
+//     $('#6').text('')
+//     $('#7').text('')
+//     $('#8').text('')
+//     $('.playerWins').text('')
+//     game = false
+//   })
+// }
 
 const newGame = function (event) {
   $('#newGame').click(function () {
@@ -144,6 +146,9 @@ const onSignOut = event => {
 // }
 
 const onNewGame = event => {
+  tacBoard = ['', '', '', '', '', '', '', '', '']
+  console.log(tacBoard)
+  game = false
   api.newGameToApi()
     .then(ui.onNewGameSuccess)
     .catch(ui.onNewGameFailure)
@@ -169,7 +174,7 @@ const onGameMoves = event => {
 
 module.exports = {
   nonOccupy,
-  playAgain,
+  // playAgain,
   newGame,
   onSignIn,
   onSignUp,
