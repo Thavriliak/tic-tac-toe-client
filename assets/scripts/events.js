@@ -30,7 +30,7 @@ const swapXO = function () {
     tacBoard[event.currentTarget.id] = 'O'
     // console.log(tacBoard)
   }
-  console.log(player)
+  // console.log(player)
   // doNotPassGo()
   // nonOccupy()-
 }
