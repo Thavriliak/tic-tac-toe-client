@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+    <div class="buttModals">
+      <button type="button" class="btn btn-primary" data-toggle="modal"
+      data-target="#signInModal">Sign In</button>
+<!-- Creating a sign in modal on my application-->
+      <div class="modal fade" id="signInModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+
+              <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
+              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+
+            </div>
+            <div class="modal-body">
+              <!-- Adding sign in to body of modal-->
+              <form id="sign-in" class="border">
+                <fieldset>
+                  <legend>Sign in!</legend>
+                  <input type="text" name="credentials[email]" placeholder="Email">
+                  <input type="password" name="credentials[password]" placeholder="Password">
+                  <input type="submit" value="Sign in!">
+                </fieldset>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!--Adding a sign up modal to application-->
+      <button type="button" class="btn btn-primary" id="signUppp" data-toggle="modal"
+      data-target="#signUpModal">Sign Up!</button>
+
+      <div class="modal fade" id="signUpModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+
+              <h5 class="modal-title" id="signUpModalLabel">Sign up</h5>
+              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+
+            </div>
+            <div class="modal-body">
+              <!-- Adding in sign up inside of modal-->
+              <form id="sign-up" class="border">
+                <fieldset>
+                  <legend>Sign up</legend>
+                  <input type="text" name="credentials[email]" placeholder="Email">
+                  <input type="password" name="credentials[password]" placeholder="Password">
+                  <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                  <input type="submit" value="Sign up!">
+                </fieldset>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div id="afterSignIn">
+    <button type="button" class="btn btn-primary" id="sgOut">Sign Out</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal"
+      data-target="#changePasswordModal">Change Password</button>
+      <div class="modal fade" id="changePasswordModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+
+              <h5 class="modal-title" id="changePasswordLabel">Sign up</h5>
+              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+
+            </div>
+            <div class="modal-body">
+              <!-- Adding in change password inside of modal-->
+              <form id="change-password" class="border">
+                <fieldset>
+                  <legend>Change Password</legend>
+                  <input type="password" name="passwords[old]" placeholder="Old Password">
+                  <input type="password" name="passwords[new]" placeholder="New Password">
+                  <input type="submit" value="Change Password!">
+                </fieldset>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <button type="button" class="pastGames btn btn-primary" data-toggle="modal"
+        data-target="#pastGamesModal">Past Games</button>
+        <div class="modal fade" id="pastGamesModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+
+                <h5 class="modal-title" id="PastGamesLabel">Past Games</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+
+              </div>
+              <div class="modal-body" id="pastGamesBody">
+                <!-- Why is modal body not appearing-->
+                  <form id="pastGames-index">
+                  <button type="submit" class="btn btn-default" id="allGames">Past Games!</button>
+                </form>
+                <div id="content"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+<br>
+      <h1>Tic-Tac-Toe</h1>
+      <h3>Instructions</h3>
+      <br>
+        <p>Tic Tac Toe is a simple game of logic and fun! One player is X and
+          the other player is O, each take alternating turns taking up a position
+          on the gameboard. The goal you may ask?? Get three in a row first and
+          you win! Sound easy? I guess we will see...</p>
+      <br>
+
+<!-- Made a div to input which player wins when event occurs -->
+      <div class="playerWins" id="pWins"></div>
+
+<!-- Using Bootstrap to create rows and columns for gameboard-->
+      <div class="container" id="theContainer">
+        <div class="row">
+          <div class="col-2 box gray" id="0"></div>
+          <div class="col-2 box gray" id="1"></div>
+          <div class="col-2 box gray" id="2"></div>
+        </div>
+        <div class="row">
+          <div class="col-2 box gray" id="3"></div>
+          <div class="col-2 box gray" id="4"></div>
+          <div class="col-2 box gray" id="5"></div>
+        </div>
+        <div class="row">
+          <div class="col-2 box gray" id="6"></div>
+          <div class="col-2 box gray" id="7"></div>
+          <div class="col-2 box gray" id="8"></div>
+        </div>
+      </div>
+      <div class="newGame">
+        <button type="button" class="btn btn-primary" id='newGame'>New Game!!</button>
+      </div>
+      <div class="playAgain">
+        <button type="button" class="btn btn-primary" id='pAgain'>Play Again!</button>
+      </div>
+    </body>
+</html>
