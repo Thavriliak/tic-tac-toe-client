@@ -23,12 +23,12 @@ const swapXO = function () {
     player = 'O'
     $(event.currentTarget).text('X')
     tacBoard[event.currentTarget.id] = 'X'
-    console.log(tacBoard)
+    // console.log(tacBoard)
   } else {
     player = 'X'
     $(event.currentTarget).text('O')
     tacBoard[event.currentTarget.id] = 'O'
-    console.log(tacBoard)
+    // console.log(tacBoard)
   }
   console.log(player)
   // doNotPassGo()
@@ -46,7 +46,7 @@ const didIWin = function () {
     tacBoard[3] === 'X' && tacBoard[4] === 'X' && tacBoard[5] === 'X' ||
     tacBoard[6] === 'X' && tacBoard[7] === 'X' && tacBoard[8] === 'X'
   ) {
-    console.log('Player One won the game!')
+    // console.log('Player One won the game!')
     // places text inside the empty div above the gameboard.
     $('.playerWins').append('<h3>Player One Wins</h3>')
     $('.container').off(event.currentTarget)
@@ -61,7 +61,7 @@ const didIWin = function () {
     tacBoard[3] === 'O' && tacBoard[4] === 'O' && tacBoard[5] === 'O' ||
     tacBoard[6] === 'O' && tacBoard[7] === 'O' && tacBoard[8] === 'O'
   ) {
-    console.log('Player Two won the game!')
+    // console.log('Player Two won the game!')
     $('.playerWins').append('<h3>Player Two Wins</h3>')
     $('.container').off(event.currentTarget)
     game = true
@@ -144,7 +144,7 @@ const onSignOut = event => {
 
 const onNewGame = event => {
   tacBoard = ['', '', '', '', '', '', '', '', '']
-  console.log(tacBoard)
+  // console.log(tacBoard)
   game = false
   api.newGameToApi()
     .then(ui.onNewGameSuccess)

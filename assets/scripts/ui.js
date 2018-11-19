@@ -73,7 +73,8 @@ const signOutFailure = error => {
 }
 
 const onNewGameSuccess = data => {
-  console.log('made game')
+  // console.log('made game')
+  console.log(data)
   store.gameId = data.game.id
   $('.container').show()
   $('.playAgain').show()
@@ -91,22 +92,23 @@ const onNewGameSuccess = data => {
 }
 
 const onNewGameFailure = error => {
-  console.log('You had an error when creating a new game')
+  // console.log('You had an error when creating a new game')
   console.log(error)
 }
 
 const onGameMoveSuccess = data => {
-  console.log('congrats B')
+  console.log(data)
+  // console.log('congrats B')
 }
 
 const onGameMoveFailure = error => {
   console.log(error)
-  console.log('Oops you dumb stupid idiot')
+  // console.log('Oops you dumb stupid idiot')
 }
 
 const onPastGameSuccess = data => {
   console.log(data)
-  console.log('SICK')
+  // console.log('SICK')
   // $(#content).html('')
   // data.game.forEach(game => {
   //   const gameHTML = (`
