@@ -40,44 +40,60 @@ const signOut = () => {
 
 // ---------------------------------------------------------------------------
 
-const getAllMovesFromApi = function () {
-  // use AJAX to send request
-  const response = $.ajax({
-    url: config.apiUrl + '/books',
-    method: 'GET'
-  })
-  // return the AJAX object
-  return response
-}
+// const getAllMovesFromApi = function () {
+//   // use AJAX to send request
+//   const response = $.ajax({
+//     url: config.apiUrl + '/books',
+//     method: 'GET'
+//   })
+//   // return the AJAX object
+//   return response
+// }
+//
+// const getOneGameFromApi = function (id) {
+//   return $.ajax({
+//     url: config.apiUrl + `/games/${id}`,
+//     method: 'GET'
+//   })
+// // }
+//
+// const deleteOneGameFromApi = function (id) {
+//   return $.ajax({
+//     url: config.Url + `/games/${id}`,
+//     method: 'DELETE'
+//   })
+// }
 
-const getOneBookFromApi = function (id) {
+const updateOneMoveFromApi = data => {
   return $.ajax({
-    url: config.apiUrl + `/books/${id}`,
-    method: 'GET'
-  })
-}
-
-const deleteOneBookFromApi = function (id) {
-  return $.ajax({
-    url: config.Url + `/books/${id}`,
-    method: 'DELETE'
-  })
-}
-
-// { book: { id: 55, title: 'something', author: 'some author'} }
-const updateOneBookFromApi = function (bookObject) {
-  return $.ajax({
-    url: config.Url + `/books/${bookObject.book.id}`,
+    url: config.apiUrl + `/games/${store.gameId}`,
     method: 'PATCH',
-    data: bookObject
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
   })
 }
 
-const createOneBookFromApi = function (bookObject) {
+const newGameToApi = () => {
   return $.ajax({
-    url: config.Url + `/books/`,
+    url: config.apiUrl + `/games`,
     method: 'POST',
-    data: bookObject
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {}
+  })
+}
+
+const getPastGamesFromApi = function () {
+  // use AJAX to send request
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
@@ -86,9 +102,10 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  getAllMovesFromApi,
-  getOneBookFromApi,
-  deleteOneBookFromApi,
-  updateOneBookFromApi,
-  createOneBookFromApi
+  // getAllMovesFromApi,
+  // getOneGameFromApi,
+  // deleteOneGameFromApi,
+  updateOneMoveFromApi,
+  newGameToApi,
+  getPastGamesFromApi
 }

@@ -3,7 +3,7 @@
 $background-color: #000;
 $font-color: #542298;
 $white: #543298;
-$grey: rgb(128, 128, 128);
+$grey: rgb(140, 140, 140);
 $teal: rgb(0, 156, 161);
 $black: #000;
 
@@ -30,6 +30,7 @@ body {
 
 .playAgain {
   text-align: center;
+  display: none;
 }
 
 .row {
@@ -45,6 +46,19 @@ body {
 }
 
 #afterSignIn {
+  display: none;
+}
+
+#theContainer {
+  display: none;
+}
+
+.newGame {
+  text-align: center;
+  display: none;
+}
+
+.pastGames {
   display: none;
 }
 
@@ -64,5 +78,5 @@ h3 {
 p {
   text-align: center;
   font-size: 20px;
-  color: #404040;
+  color: #808080;
 }

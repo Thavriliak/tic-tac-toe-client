@@ -23,17 +23,16 @@ const swapXO = function () {
     player = 'O'
     $(event.currentTarget).text('X')
     tacBoard[event.currentTarget.id] = 'X'
-    console.log(tacBoard)
+    // console.log(tacBoard)
   } else {
     player = 'X'
     $(event.currentTarget).text('O')
     tacBoard[event.currentTarget.id] = 'O'
-    console.log(tacBoard)
+    // console.log(tacBoard)
   }
-  console.log(player)
-  didIWin()
+  // console.log(player)
   // doNotPassGo()
-  // nonOccupy()
+  // nonOccupy()-
 }
 // all of the possibilities for either x to win or for o to win
 const didIWin = function () {
@@ -46,14 +45,13 @@ const didIWin = function () {
     tacBoard[0] === 'X' && tacBoard[1] === 'X' && tacBoard[2] === 'X' ||
     tacBoard[3] === 'X' && tacBoard[4] === 'X' && tacBoard[5] === 'X' ||
     tacBoard[6] === 'X' && tacBoard[7] === 'X' && tacBoard[8] === 'X'
-) {
-    console.log('Player One won the game!')
+  ) {
+    // console.log('Player One won the game!')
     // places text inside the empty div above the gameboard.
     $('.playerWins').append('<h3>Player One Wins</h3>')
     $('.container').off(event.currentTarget)
     game = true
-  }
-else if (
+  } else if (
     tacBoard[0] === 'O' && tacBoard[3] === 'O' && tacBoard[6] === 'O' ||
     tacBoard[1] === 'O' && tacBoard[4] === 'O' && tacBoard[7] === 'O' ||
     tacBoard[2] === 'O' && tacBoard[5] === 'O' && tacBoard[8] === 'O' ||
@@ -63,7 +61,7 @@ else if (
     tacBoard[3] === 'O' && tacBoard[4] === 'O' && tacBoard[5] === 'O' ||
     tacBoard[6] === 'O' && tacBoard[7] === 'O' && tacBoard[8] === 'O'
   ) {
-    console.log('Player Two won the game!')
+    // console.log('Player Two won the game!')
     $('.playerWins').append('<h3>Player Two Wins</h3>')
     $('.container').off(event.currentTarget)
     game = true
@@ -75,24 +73,33 @@ else if (tacBoard[0] != '' && tacBoard[1] != '' && tacBoard[2] != ''
   }
 }
 // clears the gameboard and tacBoard of any values that the player can start over.
-const playAgain = function (event) {
-  $('#pAgain').click(function () {
-    tacBoard = ['', '', '', '', '', '', '', '', '']
-    console.log(tacBoard)
-    $('#0').text('')
-    $('#1').text('')
-    $('#2').text('')
-    $('#3').text('')
-    $('#4').text('')
-    $('#5').text('')
-    $('#6').text('')
-    $('#7').text('')
-    $('#8').text('')
-    $('.playerWins').text('')
-    game = false
+// const playAgain = function (event) {
+//   $('#pAgain').click(function () {
+//     tacBoard = ['', '', '', '', '', '', '', '', '']
+//     console.log(tacBoard)
+//     game = false
+//
+//     $('#0').text('')
+//     $('#1').text('')
+//     $('#2').text('')
+//     $('#3').text('')
+//     $('#4').text('')
+//     $('#5').text('')
+//     $('#6').text('')
+//     $('#7').text('')
+//     $('#8').text('')
+//     $('.playerWins').text('')
+//     game = false
+//   })
+// }
+
+const newGame = function (event) {
+  $('#newGame').click(function () {
+    $('.container').show()
+    $('.playAgain').show()
+    $('.newGame').hide()
   })
 }
-
 
 // ------------------------------------------------------------------------------
 
@@ -129,17 +136,56 @@ const onSignOut = event => {
 
 // ----------------------------------------------------------------------------
 
-const eachGameMove = function () {
-  if (swapXO()) {
+// const eachGameMove = function () {
+//   if (swapXO()) {
+//
+//   }
+// }
 
+const onNewGame = event => {
+  tacBoard = ['', '', '', '', '', '', '', '', '']
+  // console.log(tacBoard)
+  game = false
+  api.newGameToApi()
+    .then(ui.onNewGameSuccess)
+    .catch(ui.onNewGameFailure)
+}
+
+const onGameMoves = event => {
+  const index = $(event.target).attr('class').replace('cell id', '')
+  const value = player
+  const over = didIWin()
+  const data = {
+    game: {
+      cell: {
+        index,
+        value
+      },
+      over
+    }
+    // data.game.cell.push(player)
   }
+  api.updateOneMoveFromApi(data)
+    .then(ui.onGameMoveSuccess)
+    .catch(ui.onGameMoveFailure)
+}
+
+const onPastGames = event => {
+  event.preventDefault()
+  api.getPastGamesFromApi()
+    .then(ui.onPastGameSuccess)
+    .catch(ui.onPastGameFailure)
 }
 
 module.exports = {
   nonOccupy,
-  playAgain,
+  // playAgain,
+  newGame,
   onSignIn,
   onSignUp,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  onNewGame,
+  onGameMoves,
+  onPastGames
 }
