@@ -26,6 +26,7 @@ const signInSuccess = data => {
   $('#signInModal').modal('toggle')
   $('#afterSignIn').show()
   $('.newGame').show()
+  $('.pastGames').show()
 }
 
 const signInFailure = error => {
@@ -61,6 +62,7 @@ const signOutSuccess = data => {
   $('.container').hide()
   $('.newGame').hide()
   $('.playAgain').hide()
+  $('.pastGames').hide()
 }
 
 const signOutFailure = error => {
@@ -102,6 +104,24 @@ const onGameMoveFailure = error => {
   console.log('Oops you dumb stupid idiot')
 }
 
+const onPastGameSuccess = data => {
+  console.log(data)
+  console.log('SICK')
+  // $(#content).html('')
+  // data.game.forEach(game => {
+  //   const gameHTML = (`
+  //     <h4>Cells: ${game.cells}</h4>
+  //     <br>
+  //   `)
+  //   $('#content').append(gameHTML)
+  // })
+}
+
+
+const onPastGameFailure = error => {
+  console.log(error)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -114,5 +134,7 @@ module.exports = {
   onNewGameSuccess,
   onNewGameFailure,
   onGameMoveSuccess,
-  onGameMoveFailure
+  onGameMoveFailure,
+  onPastGameSuccess,
+  onPastGameFailure
 }

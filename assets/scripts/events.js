@@ -31,9 +31,8 @@ const swapXO = function () {
     console.log(tacBoard)
   }
   console.log(player)
-  didIWin()
   // doNotPassGo()
-  // nonOccupy()
+  // nonOccupy()-
 }
 // all of the possibilities for either x to win or for o to win
 const didIWin = function () {
@@ -46,14 +45,13 @@ const didIWin = function () {
     tacBoard[0] === 'X' && tacBoard[1] === 'X' && tacBoard[2] === 'X' ||
     tacBoard[3] === 'X' && tacBoard[4] === 'X' && tacBoard[5] === 'X' ||
     tacBoard[6] === 'X' && tacBoard[7] === 'X' && tacBoard[8] === 'X'
-) {
+  ) {
     console.log('Player One won the game!')
     // places text inside the empty div above the gameboard.
     $('.playerWins').append('<h3>Player One Wins</h3>')
     $('.container').off(event.currentTarget)
     game = true
-  }
-else if (
+  } else if (
     tacBoard[0] === 'O' && tacBoard[3] === 'O' && tacBoard[6] === 'O' ||
     tacBoard[1] === 'O' && tacBoard[4] === 'O' && tacBoard[7] === 'O' ||
     tacBoard[2] === 'O' && tacBoard[5] === 'O' && tacBoard[8] === 'O' ||
@@ -102,7 +100,6 @@ const newGame = function (event) {
     $('.newGame').hide()
   })
 }
-
 
 // ------------------------------------------------------------------------------
 
@@ -166,10 +163,18 @@ const onGameMoves = event => {
       },
       over
     }
+    // data.game.cell.push(player)
   }
   api.updateOneMoveFromApi(data)
     .then(ui.onGameMoveSuccess)
     .catch(ui.onGameMoveFailure)
+}
+
+const onPastGames = event => {
+  event.preventDefault()
+  api.getPastGamesFromApi()
+    .then(ui.onPastGameSuccess)
+    .catch(ui.onPastGameFailure)
 }
 
 module.exports = {
@@ -181,5 +186,6 @@ module.exports = {
   onSignOut,
   onChangePassword,
   onNewGame,
-  onGameMoves
+  onGameMoves,
+  onPastGames
 }

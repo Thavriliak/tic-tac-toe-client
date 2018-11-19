@@ -27,4 +27,5 @@ $(() => {
   $('#newGame').on('click', events.onNewGame)
   $('#pAgain').on('click', events.onNewGame)
   $('.col-2').on('click', events.onGameMoves)
+  $('#allGames').on('click', events.onPastGames)
 })

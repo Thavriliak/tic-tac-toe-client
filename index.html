@@ -105,6 +105,31 @@
         </div>
       </div>
     </div>
+      <button type="button" class="pastGames btn btn-primary" data-toggle="modal"
+        data-target="#pastGamesModal">Past Games</button>
+        <div class="modal fade" id="pastGamesModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+
+                <h5 class="modal-title" id="PastGamesLabel">Past Games</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+
+              </div>
+              <div class="modal-body" id="pastGamesBody">
+                <!-- Why is modal body not appearing-->
+                  <form id="pastGames-index">
+                  <button type="submit" class="btn btn-default" id="allGames">Past Games!</button>
+                </form>
+                <div id="content"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+<br>
       <h1>Tic-Tac-Toe</h1>
       <h3>Instructions</h3>
       <br>
